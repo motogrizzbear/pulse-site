@@ -4,7 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Pulse is a free iPhone and Apple Watch app for pelvic-floor exercises and personal bladder tracking, built by one guy who needed it himself.">
-  <meta name="theme-color" content="#f7f8fb">
+  <meta name="theme-color" content="#f7f8fb">\n  <script>
+    try {
+      const theme = localStorage.getItem('pulse-theme');
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch {}
+  </script>
   <title>Pulse — Pelvic-floor workouts and bladder tracking</title>
   <script>
     (() => {
@@ -172,3 +177,4 @@
   </footer>
 </body>
 </html>
+\n  <script src="./assets/theme.js" defer></script>
