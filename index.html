@@ -6,7 +6,18 @@
   <meta name="description" content="Pulse is a free iPhone and Apple Watch app for pelvic-floor exercises and personal bladder tracking, built by one guy who needed it himself.">
   <meta name="theme-color" content="#f7f8fb">
   <title>Pulse — Pelvic-floor workouts and bladder tracking</title>
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("pulse-theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {}
+    })();
+  </script>
   <link rel="stylesheet" href="./assets/site.css">
+  <script defer src="./assets/theme.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -21,6 +32,7 @@
         <a href="#story">Why I made it</a>
         <a href="./support/">Help &amp; Support</a>
         <a href="./privacy/">Privacy</a>
+        <button class="theme-toggle" type="button" aria-label="Theme: System. Switch to light theme.">◐ System</button>
         <a href="https://buymeacoffee.com/motobear" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee (opens in a new tab)">☕ Buy me a coffee</a>
       </nav>
     </div>

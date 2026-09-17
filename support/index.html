@@ -6,7 +6,18 @@
   <meta name="description" content="Help and support for Pulse, including bladder logging, trends, workouts, Apple Watch sync, reminders, Health access, exports, and troubleshooting.">
   <meta name="theme-color" content="#f7f8fb">
   <title>Help & Support — Pulse</title>
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem("pulse-theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {}
+    })();
+  </script>
   <link rel="stylesheet" href="../assets/site.css">
+  <script defer src="../assets/theme.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -17,6 +28,7 @@
         <a href="../">Home</a>
         <a href="./" aria-current="page">Help &amp; Support</a>
         <a href="../privacy/">Privacy</a>
+        <button class="theme-toggle" type="button" aria-label="Theme: System. Switch to light theme.">◐ System</button>
         <a href="https://buymeacoffee.com/motobear" target="_blank" rel="noopener noreferrer" aria-label="Buy me a coffee (opens in a new tab)">Buy me a coffee</a>
       </nav>
     </div>
