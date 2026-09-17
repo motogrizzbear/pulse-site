@@ -1,71 +1,85 @@
 (() => {
   const storageKey = "pulse-theme";
-  const modes = ["system", "light", "dark"];
   const root = document.documentElement;
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const order = ["system", "light", "dark"];
+  const labels = {
+    system: "◐ System",
+    light: "☀ Light",
+    dark: "☾ Dark"
+  };
+  const names = {
+    system: "System",
+    light: "Light",
+    dark: "Dark"
+  };
 
-  function getMode() {
+  function readPreference() {
     try {
       const saved = localStorage.getItem(storageKey);
-      return modes.includes(saved) ? saved : "system";
+      return saved === "light" || saved === "dark" ? saved : "system";
     } catch {
       return "system";
     }
   }
 
-  function resolvedTheme(mode) {
-    return mode === "system" ? (media.matches ? "dark" : "light") : mode;
+  let preference = readPreference();
+
+  function resolvedTheme() {
+    if (preference !== "system") return preference;
+    return systemTheme.matches ? "dark" : "light";
   }
 
-  function apply(mode) {
-    if (mode === "system") {
-      root.removeAttribute("data-theme");
+  function updateThemeColor() {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    meta.setAttribute("content", resolvedTheme() === "dark" ? "#0f1117" : "#f7f8fb");
+  }
+
+  function updateButtons() {
+    const next = order[(order.indexOf(preference) + 1) % order.length];
+    document.querySelectorAll(".theme-toggle").forEach((button) => {
+      button.textContent = labels[preference];
+      button.setAttribute(
+        "aria-label",
+        `Theme: ${names[preference]}. Switch to ${names[next].toLowerCase()} theme.`
+      );
+      button.title = `Theme: ${names[preference]}`;
+    });
+  }
+
+  function applyPreference() {
+    if (preference === "system") {
+      delete root.dataset.theme;
     } else {
-      root.dataset.theme = mode;
+      root.dataset.theme = preference;
     }
-
-    const resolved = resolvedTheme(mode);
-    const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) {
-      themeColor.setAttribute("content", resolved === "dark" ? "#0f1218" : "#f7f8fb");
-    }
-
-    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.dataset.mode = mode;
-      button.setAttribute("aria-label", `Theme: ${mode}. Activate to switch theme.`);
-      button.setAttribute("title", `Theme: ${mode}`);
-
-      const icon = button.querySelector("[data-theme-icon]");
-      const label = button.querySelector("[data-theme-label]");
-      if (icon) icon.textContent = mode === "dark" ? "☾" : mode === "light" ? "☀" : "◐";
-      if (label) label.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-    });
+    updateButtons();
+    updateThemeColor();
   }
 
-  function setMode(mode) {
+  function savePreference() {
     try {
-      if (mode === "system") localStorage.removeItem(storageKey);
-      else localStorage.setItem(storageKey, mode);
+      if (preference === "system") {
+        localStorage.removeItem(storageKey);
+      } else {
+        localStorage.setItem(storageKey, preference);
+      }
     } catch {}
-    apply(mode);
   }
 
-  function cycleMode() {
-    const current = getMode();
-    setMode(modes[(modes.indexOf(current) + 1) % modes.length]);
-  }
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".theme-toggle");
+    if (!button) return;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    apply(getMode());
-    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
-      button.addEventListener("click", cycleMode);
-    });
+    preference = order[(order.indexOf(preference) + 1) % order.length];
+    savePreference();
+    applyPreference();
   });
 
-  const onSystemChange = () => {
-    if (getMode() === "system") apply("system");
-  };
+  systemTheme.addEventListener?.("change", () => {
+    if (preference === "system") updateThemeColor();
+  });
 
-  if (typeof media.addEventListener === "function") media.addEventListener("change", onSystemChange);
-  else if (typeof media.addListener === "function") media.addListener(onSystemChange);
+  applyPreference();
 })();
