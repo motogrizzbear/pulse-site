@@ -121,7 +121,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   z-index: 100;
   transform: translateY(-180%);
   background: var(--text);
-  color: white;
+  color: var(--button-primary-text);
   padding: 10px 14px;
   border-radius: 10px;
   text-decoration: none;
