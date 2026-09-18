@@ -20,7 +20,10 @@ pulse-site/
 │       ├── pulse-iphone-02.png
 │       ├── pulse-iphone-03.png
 │       ├── pulse-iphone-04.png
-│       └── pulse-iphone-05.png
+│       ├── pulse-iphone-05.png
+│       ├── pulse-apple-watch-home.png
+│       ├── pulse-apple-watch-log-pee.png
+│       └── pulse-apple-watch-log-drink.png
 ├── 404.html
 └── .nojekyll
 ```
