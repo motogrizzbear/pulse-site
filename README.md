@@ -60,4 +60,5 @@ Use the support URL for App Store Connect’s **Support URL**, the privacy URL f
 - The site is plain semantic HTML and CSS.
 - Keep medical claims conservative: Pulse is a personal tracking and exercise-guidance tool, not a diagnostic or treatment product.
 - Do not publish private user reports, medical details, or application source code in this repository.
-- A private support email/contact should be added to the support page before public App Store release.
+- Private support email: `pulse-app@motobear.dev`.
+- Public, non-sensitive bug reports can be filed in this repository’s Issues.
