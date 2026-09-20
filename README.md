@@ -51,9 +51,9 @@ After merging the site PR:
 
 The default project-site URLs will be:
 
-- Product: `https://seattle-grizzly-coder.github.io/pulse-site/`
-- Support: `https://seattle-grizzly-coder.github.io/pulse-site/support/`
-- Privacy: `https://seattle-grizzly-coder.github.io/pulse-site/privacy/`
+- Product: `https://motogrizzbear.github.io/pulse-site/`
+- Support: `https://motogrizzbear.github.io/pulse-site/support/`
+- Privacy: `https://motogrizzbear.github.io/pulse-site/privacy/`
 
 Use the support URL for App Store Connect’s **Support URL**, the privacy URL for **Privacy Policy URL**, and the root URL as the optional **Marketing URL**.
 
