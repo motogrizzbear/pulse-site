@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Help and support for Pulse, including bladder logging, trends, workouts, Apple Watch sync, reminders, Health access, exports, and troubleshooting.">
+  <meta name="description" content="Help and support for Pulse, including bladder logging, trends, workouts, Apple Watch sync, reminders, recovery, exports, and troubleshooting.">
   <meta name="theme-color" content="#f7f8fb">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <title>Help & Support — Pulse</title>
@@ -39,7 +39,7 @@
     <section class="docs-hero shell">
       <p class="eyebrow">Help &amp; Support</p>
       <h1>Using Pulse</h1>
-      <p class="lede">A practical guide to bladder logging, trends, workouts, Apple Watch sync, reminders, Health access, exports, and common troubleshooting.</p>
+      <p class="lede">A practical guide to bladder logging, trends, workouts, Apple Watch sync, reminders, recovery, exports, and common troubleshooting.</p>
     </section>
 
     <div class="docs-layout shell">
@@ -50,8 +50,8 @@
         <a href="#trends">Trends</a>
         <a href="#workouts">Workouts</a>
         <a href="#watch">Apple Watch</a>
-        <a href="#reminders-health">Reminders &amp; Health</a>
-        <a href="#export-delete">Export &amp; delete</a>
+        <a href="#reminders">Reminders</a>
+        <a href="#export-delete">Export, recovery &amp; delete</a>
         <a href="#troubleshooting">Troubleshooting</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -64,7 +64,7 @@
             <li><strong>Bladder Log</strong> is for quick diary entries and day-by-day review.</li>
             <li><strong>Workouts</strong> contains the Guided Program, workout plans, and today’s checklist.</li>
             <li><strong>History</strong> shows bladder trends, daily summaries, and workout history.</li>
-            <li><strong>Settings</strong> controls reminders, Apple Health sync, and the personal overnight reporting window.</li>
+            <li><strong>Settings</strong> controls reminders and the personal overnight reporting window.</li>
           </ul>
         </section>
 
@@ -88,9 +88,9 @@
 
         <section id="trends">
           <h2>Understanding trends</h2>
-          <p>History can compare your recent logging period with the immediately preceding period. You can switch among 7-, 14-, and 28-day comparisons and review measures such as voids per day, average interval, average stream duration, leaks per day, and urgency signals.</p>
+          <p>History can compare your recent logging period with the immediately preceding period. You can switch among 7-, 14-, and 28-day comparisons and review measures such as recorded voids, average interval, average stream duration, recorded leaks, and urgency signals.</p>
           <p>The trend chart supports multiple time ranges and grouping levels. Use it to look for changes in your own routine rather than as a diagnostic result.</p>
-          <div class="note"><strong>Logging coverage matters.</strong> A low-coverage period may reflect missing diary entries rather than a true behavior change.</div>
+          <div class="note"><strong>Logging coverage matters.</strong> A partial diary cannot prove that a symptom did not occur. Missing entries can make a period look quieter than it really was, so Pulse treats incomplete periods cautiously.</div>
         </section>
 
         <section id="workouts">
@@ -107,26 +107,26 @@
         <section id="watch">
           <h2>Apple Watch</h2>
           <p>The Apple Watch companion can receive workout plans from your iPhone and send completed workouts and supported bladder-log entries back to the phone.</p>
-          <p>If your iPhone is temporarily unreachable, Pulse uses Apple’s WatchConnectivity delivery mechanisms to queue supported records for later delivery. Reopen the apps and bring the devices back within normal connectivity range if a record has not appeared yet.</p>
+          <p>If your iPhone is temporarily unreachable, Pulse keeps supported records queued until the iPhone confirms they were saved. Reopen the apps and bring the devices back within normal connectivity range if a record has not appeared yet.</p>
           <div class="note"><strong>Do not repeatedly re-log the same event while waiting for sync.</strong> Give the devices a chance to reconnect first.</div>
         </section>
 
-        <section id="reminders-health">
-          <h2>Reminders and Apple Health</h2>
-          <h3>Workout reminders</h3>
+        <section id="reminders">
+          <h2>Workout reminders</h2>
           <p>Workout reminders are scheduled locally on your device. If notifications are denied, Pulse remains usable; you can change notification permissions later in iOS Settings.</p>
-
-          <h3>Apple Health</h3>
-          <p>Health sync is optional. When enabled and authorized, Pulse can write completed workouts to Apple Health. Pulse does not read your existing Health data.</p>
         </section>
 
         <section id="export-delete">
-          <h2>Exporting and deleting data</h2>
+          <h2>Exporting, recovering, and deleting data</h2>
           <h3>CSV export</h3>
           <p>History exports are created only when you request them. iOS then presents the standard share sheet so you can choose where the CSV goes. After sharing, the destination you selected is responsible for that copy.</p>
 
+          <h3>Database recovery copy</h3>
+          <p>If Pulse cannot open its local database, it shows a recovery screen instead of silently replacing or deleting your saved data. You can retry opening the database or prepare a recovery copy of the database files.</p>
+          <p>Recovery files may contain private workout and bladder-diary information. Keep all files together, save them somewhere you trust, and do not post them to a public issue. A recovery copy is for troubleshooting and is not the same as a supported backup-and-restore archive.</p>
+
           <h3>Delete data</h3>
-          <p>You can delete individual records or use the available Clear All controls for workout history or bladder logs. Deleting the Pulse app removes its locally stored app data. Workouts already written to Apple Health remain under your control in the Health app.</p>
+          <p>You can delete individual records or use the available Clear All controls for workout history or bladder logs. Deleting the Pulse app removes its locally stored app data.</p>
         </section>
 
         <section id="troubleshooting">
@@ -142,8 +142,8 @@
           <h3>Notifications are not appearing</h3>
           <p>Check the notification permission shown in Pulse Settings, then verify Pulse is allowed to send notifications in iOS Settings. Reminder scheduling is local and does not use a Pulse push-notification server.</p>
 
-          <h3>Health workouts are not syncing</h3>
-          <p>Verify Health sync is enabled in Pulse and that write permission for workouts is allowed in Apple Health settings. A denied permission does not prevent you from using Pulse normally.</p>
+          <h3>Pulse says it cannot open saved data</h3>
+          <p>Use <strong>Retry Opening Data</strong> first. If the problem continues, choose <strong>Prepare Recovery Copy</strong> before seeking support. Do not delete and reinstall the app as a troubleshooting step when the data matters, because deleting the app removes its local data.</p>
 
           <h3>The app looks stale after a change</h3>
           <p>Force-quit Pulse and relaunch it. If the issue persists, restarting the affected device can help clear transient Apple-platform state.</p>
@@ -153,7 +153,7 @@
           <h2>Contact</h2>
           <p>For private support, email <a href="mailto:pulse-app@motobear.dev">pulse-app@motobear.dev</a>.</p>
           <p>The website lives in the <a href="https://github.com/motogrizzbear/pulse-site" target="_blank" rel="noopener noreferrer">public Pulse site repository</a>. If you found a site or app bug that does not include sensitive personal information, you can <a href="https://github.com/motogrizzbear/pulse-site/issues/new" target="_blank" rel="noopener noreferrer">cut an issue</a>.</p>
-          <p><strong>Please do not put bladder, pelvic-health, or other medical details in a public GitHub issue.</strong></p>
+          <p><strong>Please do not put bladder, pelvic-health, recovery files, or other medical details in a public GitHub issue.</strong></p>
         </section>
 
         <section class="docs-medical" aria-label="Medical disclaimer">
