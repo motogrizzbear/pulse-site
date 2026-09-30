@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Help and support for Pulse, including bladder logging, trends, workouts, Apple Watch sync, reminders, recovery, exports, and troubleshooting.">
+  <meta name="description" content="Help and support for Pulse, including bladder logging, trends, workouts, Apple Watch sync, reminders, backup, recovery, exports, and troubleshooting.">
   <meta name="theme-color" content="#f7f8fb">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <title>Help & Support — Pulse</title>
@@ -39,7 +39,7 @@
     <section class="docs-hero shell">
       <p class="eyebrow">Help &amp; Support</p>
       <h1>Using Pulse</h1>
-      <p class="lede">A practical guide to bladder logging, trends, workouts, Apple Watch sync, reminders, recovery, exports, and common troubleshooting.</p>
+      <p class="lede">A practical guide to bladder logging, trends, workouts, Apple Watch sync, reminders, backup, recovery, exports, and common troubleshooting.</p>
     </section>
 
     <div class="docs-layout shell">
@@ -51,7 +51,7 @@
         <a href="#workouts">Workouts</a>
         <a href="#watch">Apple Watch</a>
         <a href="#reminders">Reminders</a>
-        <a href="#export-delete">Export, recovery &amp; delete</a>
+        <a href="#export-delete">Export, backup, recovery &amp; delete</a>
         <a href="#troubleshooting">Troubleshooting</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -61,23 +61,27 @@
           <h2>Getting started</h2>
           <p>Pulse opens to the Bladder Log so the most common diary actions are immediately available. The other main areas are Workouts, History, and Settings.</p>
           <ul>
-            <li><strong>Bladder Log</strong> is for quick diary entries and day-by-day review.</li>
+            <li><strong>Bladder Log</strong> is for quick diary entries, day-by-day review, and marking how completely you tracked a day.</li>
             <li><strong>Workouts</strong> contains the Guided Program, workout plans, and today’s checklist.</li>
             <li><strong>History</strong> shows bladder trends, daily summaries, and workout history.</li>
-            <li><strong>Settings</strong> controls reminders and the personal overnight reporting window.</li>
+            <li><strong>Settings</strong> controls reminders, the personal overnight reporting window, and full backup/restore.</li>
           </ul>
         </section>
 
         <section id="bladder-diary">
           <h2>Bladder diary</h2>
           <h3>Log a pee</h3>
-          <p>Choose <strong>Log Pee</strong>, enter the stream duration, optionally record urgency, and save. Stream duration is the number of seconds you urinated; it is not a measured urine volume.</p>
+          <p>Choose <strong>Log Pee</strong>, enter the stream duration if you measured or estimated it, optionally record urgency, and save. Stream duration is the number of seconds you urinated; it is not a measured urine volume.</p>
 
           <h3>Log a drink</h3>
           <p>Choose <strong>Log Drink</strong>, select a beverage type and amount, then save. Fluid totals are shown in ounces.</p>
 
           <h3>Log leakage or urgency</h3>
           <p>You can record leakage severity and an optional activity context, or add an urgency-only event when there was no void.</p>
+
+          <h3>Mark a day complete or partial</h3>
+          <p>Pulse does not assume that a day with entries is a complete diary. For any day, you can explicitly mark the day <strong>Complete</strong> or <strong>Partial</strong> and choose which categories you were actively tracking, such as voids, fluids, leaks, or urgency.</p>
+          <p>A Complete declaration means you believe you consistently tracked the selected categories for that local calendar day. It does not mean every optional measurement was recorded and it is not a clinical conclusion. You can edit or undo the day status without deleting the underlying diary entries.</p>
 
           <h3>Edit or delete an entry</h3>
           <p>Tap an existing bladder-diary row to edit it. Swipe to delete when you want to remove a record. Editing keeps the same underlying entry identity instead of creating a duplicate.</p>
@@ -89,8 +93,9 @@
         <section id="trends">
           <h2>Understanding trends</h2>
           <p>History can compare your recent logging period with the immediately preceding period. You can switch among 7-, 14-, and 28-day comparisons and review measures such as recorded voids, average interval, average stream duration, recorded leaks, and urgency signals.</p>
+          <p>Rate-based trends use only days you explicitly marked Complete for the relevant category. A confirmed complete day with zero events can therefore count as a real zero, while partial or undeclared days stay out of that denominator. Optional measurements such as stream duration or urge remain unknown when you did not record them and are excluded from those measurement averages.</p>
           <p>The trend chart supports multiple time ranges and grouping levels. Use it to look for changes in your own routine rather than as a diagnostic result.</p>
-          <div class="note"><strong>Logging coverage matters.</strong> A partial diary cannot prove that a symptom did not occur. Missing entries can make a period look quieter than it really was, so Pulse treats incomplete periods cautiously.</div>
+          <div class="note"><strong>Logging coverage matters.</strong> A partial diary cannot prove that a symptom did not occur. Pulse keeps partial or undeclared days distinct from days you explicitly confirm as complete.</div>
         </section>
 
         <section id="workouts">
@@ -100,8 +105,11 @@
             <li>Follow the on-screen <strong>HOLD</strong> and <strong>RELAX</strong> phases.</li>
             <li>Completed workouts contribute to normal history, streaks, and weekly goals.</li>
             <li>Only completed Guided Program sessions advance Guided Program progression.</li>
-            <li>If you stop early, Pulse records the intended incomplete state rather than treating the session as fully completed.</li>
+            <li>If you intentionally stop early, Pulse records the intended incomplete state rather than treating the session as fully completed.</li>
           </ul>
+          <h3>If a workout is interrupted</h3>
+          <p>Pulse checkpoints confirmed foreground workout progress. If the app is terminated while a workout is active, reopening Pulse offers recovery choices to resume from the saved checkpoint, save the confirmed progress as a partial session, or discard it.</p>
+          <p>Time that passes while Pulse is not running is not silently counted as workout progress. This prevents an interrupted session from becoming a completed workout just because the app was closed for a while.</p>
         </section>
 
         <section id="watch">
@@ -117,13 +125,18 @@
         </section>
 
         <section id="export-delete">
-          <h2>Exporting, recovering, and deleting data</h2>
+          <h2>Exporting, backing up, recovering, and deleting data</h2>
           <h3>CSV export</h3>
-          <p>History exports are created only when you request them. iOS then presents the standard share sheet so you can choose where the CSV goes. After sharing, the destination you selected is responsible for that copy.</p>
+          <p>History exports are created only when you request them. iOS then presents the standard share sheet so you can choose where the CSV goes. The CSV is intended as a human-readable history/report export and is separate from full app backup. After sharing, the destination you selected is responsible for that copy.</p>
+
+          <h3>Full backup and restore</h3>
+          <p>In <strong>Settings → Backup &amp; Restore</strong>, choose <strong>Export Full Backup</strong> to create a versioned Pulse backup file. The backup contains the app records needed for restoration, including workout plans and history, bladder-diary entries, diary-day completeness declarations, and behavior-relevant app preferences.</p>
+          <p>Choose <strong>Restore Backup</strong> to select a supported Pulse backup. Pulse validates the file first and shows a preview of what would be added. Restore is non-destructive: matching records already on the device are kept unchanged, and missing records are added. App preferences are applied only after the saved-data transaction succeeds.</p>
+          <p>Full backup is a user-managed local file workflow, not cloud sync. Archive version 1 intentionally does not include an unfinished workout’s transient recovery checkpoint or iOS notification authorization. Resolve an interrupted workout before relying on a backup, and keep backup files somewhere private and secure.</p>
 
           <h3>Database recovery copy</h3>
           <p>If Pulse cannot open its local database, it shows a recovery screen instead of silently replacing or deleting your saved data. You can retry opening the database or prepare a recovery copy of the database files.</p>
-          <p>Recovery files may contain private workout and bladder-diary information. Keep all files together, save them somewhere you trust, and do not post them to a public issue. A recovery copy is for troubleshooting and is not the same as a supported backup-and-restore archive.</p>
+          <p>Recovery files may contain private workout and bladder-diary information. Keep all files together, save them somewhere you trust, and do not post them to a public issue. A database recovery copy is for troubleshooting and is different from the supported full backup-and-restore file in Settings.</p>
 
           <h3>Delete data</h3>
           <p>You can delete individual records or use the available Clear All controls for workout history or bladder logs. Deleting the Pulse app removes its locally stored app data.</p>
@@ -131,6 +144,9 @@
 
         <section id="troubleshooting">
           <h2>Troubleshooting</h2>
+          <h3>A workout was interrupted</h3>
+          <p>Reopen Pulse and use the recovery prompt. Choose <strong>Resume</strong> to continue from the last saved foreground checkpoint, <strong>Save Partial</strong> to preserve only confirmed progress, or <strong>Discard</strong> if you do not want to keep the interrupted session.</p>
+
           <h3>A Watch record has not appeared on iPhone</h3>
           <ol>
             <li>Confirm the iPhone and Watch are paired and have normal connectivity.</li>
@@ -153,7 +169,7 @@
           <h2>Contact</h2>
           <p>For private support, email <a href="mailto:pulse-app@motobear.dev">pulse-app@motobear.dev</a>.</p>
           <p>The website lives in the <a href="https://github.com/motogrizzbear/pulse-site" target="_blank" rel="noopener noreferrer">public Pulse site repository</a>. If you found a site or app bug that does not include sensitive personal information, you can <a href="https://github.com/motogrizzbear/pulse-site/issues/new" target="_blank" rel="noopener noreferrer">cut an issue</a>.</p>
-          <p><strong>Please do not put bladder, pelvic-health, recovery files, or other medical details in a public GitHub issue.</strong></p>
+          <p><strong>Please do not put bladder, pelvic-health, backup/recovery files, or other medical details in a public GitHub issue.</strong></p>
         </section>
 
         <section class="docs-medical" aria-label="Medical disclaimer">
